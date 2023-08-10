@@ -17,10 +17,14 @@ backend:
   database:
     client: pg
     connection:
-      host: ${POSTGRES_HOST}
-      port: ${POSTGRES_PORT}
-      user: ${POSTGRES_USER}
-      password: ${POSTGRES_PASSWORD}
+      # host: ${POSTGRES_HOST}
+      # port: ${POSTGRES_PORT}
+      # user: ${POSTGRES_USER}
+      # password: ${POSTGRES_PASSWORD}
+      host: 35.229.211.178
+      port: 5432
+      user: postgres
+      password: postgres
       # https://node-postgres.com/features/ssl
       # you can set the sslmode configuration option via the `PGSSLMODE` environment variable
       # see https://www.postgresql.org/docs/current/libpq-ssl.html Table 33.1. SSL Mode Descriptions (e.g. require)
@@ -33,3 +37,19 @@ catalog:
   # See https://backstage.io/docs/features/software-catalog/#adding-components-to-the-catalog for more details
   # on how to get entities into the catalog.
   locations: []
+
+integrations:
+  github:
+    - host: github.com
+      token: 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 # this should be the token from GitHub
+
+techdocs:
+  builder: 'local' # Alternatives - 'external'
+  generator:
+    runIn: 'docker' # Alternatives - 'local'
+    dockerImage: docker.io/pointmekin/kroki-server:0.0.1 # Docker iamge for the kroki server
+    pullImage: true
+  # generator:
+  #   runIn: 'local'
+  publisher:
+    type: 'local' 
